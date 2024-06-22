@@ -1,0 +1,10 @@
+{% extends "inventory/base_generic.html" %}
+
+{% block content %}
+    <h1>¿Estás seguro que quieres cerrar sesión?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Cerrar Sesión</button>
+    </form>
+    <a href="{% url 'inicio' %}">Volver a Inicio</a>
+{% endblock %}

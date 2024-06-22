@@ -1,0 +1,13 @@
+
+{% extends "inventory/base_generic.html" %}
+
+{% block content %}
+    <h1>Proveedores</h1>
+    <a href="{% url 'agregar_proveedor' %}">Agregar Proveedor</a>
+    <ul>
+        {% for proveedor in proveedores %}
+            <li>{{ proveedor.nombre }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

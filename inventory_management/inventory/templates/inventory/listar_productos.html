@@ -1,0 +1,13 @@
+{% extends "inventory/base_generic.html" %}
+
+{% block content %}
+    <h1>Productos</h1>
+    <a href="{% url 'agregar_producto' %}">Agregar Producto</a>
+    <ul>
+        {% for producto in productos %}
+            <li>{{ producto.nombre }} - {{ producto.descripcion }} - {{ producto.precio }} - Stock: {{ producto.stock }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'inicio' %}">Volver a Inicio</a>
+{% endblock %}
+
