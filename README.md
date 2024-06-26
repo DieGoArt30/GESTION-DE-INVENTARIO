@@ -39,10 +39,12 @@ git push -u origin main
 .gitignore
 ```
 8. Creación de proyecto Django inventory_management
-    
-   ```django-admin startproject inventory_management```
+   ```
+django-admin startproject inventory_management
+```
 
-9. cd Gestion_Inventario # Cambia al sub-directorio para trabajos de desarrollo
-    
-```python manage.py startapp inventory```
+9. cd Gestion_Inventario # Cambia al sub-directorio para trabajos de desarrollo  
+```
+python manage.py startapp inventory
+```
 
