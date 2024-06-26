@@ -327,3 +327,39 @@ def agregar_pedido(request):
 - Formulario Agregar Pedido:
 
 ![agregar pedido](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/810a1190-0be8-47f4-b78a-17b79c18d846)
+
+
+# Step 5: Configuración de Django Admin
+
+1. Registra el modelo inventory en inventory/admin.py para poder administrarlo desde Django Admin:
+
+´´´
+from django.contrib import admin
+from .models import Proveedor, Producto, Pedido
+
+admin.site.register(Proveedor)
+admin.site.register(Producto)
+admin.site.register(Pedido)
+´´´
+
+2. Crear superusuario en Django.
+
+´´´
+python manage.py createsuperuser
+
+# Registro de superusuario
+# User: Admin
+# E-mail: example@gmail.com
+# Password: xxxxx
+´´´
+# Step 6: Ejecución y Pruebas
+
+1. Ejecuta el servidor de desarrollo de Django:
+
+´´´
+python manage.py runserver
+´´´
+
+2. Accede a la aplicación desde tu navegador y realiza pruebas para asegurarte de que todas las funcionalidades funcionen correctamente.
+
+3. Mejora y adiciona nuevas funcionalidades.
