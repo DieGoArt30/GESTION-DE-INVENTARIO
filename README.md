@@ -288,3 +288,42 @@ def agregar_pedido(request):
     return render(request, 'inventory/agregar_pedido.html', {'form': form})
 ```
 
+# Step 4: Diseño de la Interfaz de Usuario
+
+1. Utiliza Django Templates para diseñar las plantillas HTML en la carpeta template
+
+- Formulario Inicio.html
+
+![inicio](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/a92b0475-949c-4ce8-90e8-1d28a0d4f175)
+
+- Formulario de Registro:
+
+![registro](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/1eab0f81-7827-4d08-a81f-5cf9149629d1)
+
+- Formulario de Login:
+
+![login](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/00f62c1e-9bbd-4c33-a182-3f10a3abb4c7)
+
+- Formulario Listar proveedor:
+
+![ñListar proveedor](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/fb048ca2-0064-42da-af3e-62e45babb3e2)
+
+- Formulario Agregar proveedor:
+
+![agregar proveedor](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/f9f4f41b-f636-4ca7-a380-d6f99a15d8a8)
+
+- Formulario Listar Producto:
+
+![listar producto](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/edd55a89-1851-4557-a2ea-fd0e8356296d)
+
+- Formulario Agregar Producto:
+
+![Agregar producto](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/c8b987ce-4f31-4b11-b345-4c1cabc1b996)
+
+- Formulario Listar Pedido:
+
+![listar pedido](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/84ef064c-3321-42cc-a1a4-5cd71c7944c7)
+
+- Formulario Agregar Pedido:
+
+![agregar pedido](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/810a1190-0be8-47f4-b78a-17b79c18d846)
