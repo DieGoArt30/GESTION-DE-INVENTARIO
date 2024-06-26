@@ -82,3 +82,209 @@ git push -u origin main
   python manage.py startapp inventory
    ```
 
+# Step 2: Diseño del modelo de datos
+1. Configuración de aplicación creada en el archivo inventory_management\settings.py
+```
+INSTALLED_APPS = [
+    ...,
+    'inventory',
+]
+```
+2. Crear archivo urls.py en inventory\urls.py
+- Abre el archivo creado inventory\urls.py en el editor de código.
+- Importa los módulos necesarios de Django:
+```
+from django.urls import path
+from . import views
+```
+
+° Define las URL para cada vista creada en inventori\views.py:
+```
+urlpatterns = [
+    path('', views.inicio, name='inicio'),
+    path('registro/', views.registro, name='registro'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+    path('proveedores/', views.listar_proveedores, name='listar_proveedores'),
+    path('proveedores/agregar/', views.agregar_proveedor, name='agregar_proveedor'),
+    path('productos/', views.listar_productos, name='listar_productos'),
+    path('productos/agregar/', views.agregar_producto, name='agregar_producto'),
+    path('pedidos/', views.listar_pedidos, name='listar_pedidos'),
+    path('pedidos/agregar/', views.agregar_pedido, name='agregar_pedido'),
+]
+```
+
+3. Configurar las URLs en el Proyecto Principal
+```
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('inventory.urls')),
+]
+```
+
+4. Abre el archivo inventory\models.py y define el modelo base con los campos requeridos (título, descripción, fecha de creación, estado):
+```
+from django.db import models
+
+class Proveedor(models.Model):
+    nombre = models.CharField(max_length=100)
+    direccion = models.CharField(max_length=255)
+    telefono = models.CharField(max_length=20)
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.nombre
+
+class Producto(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.IntegerField()
+    proveedor = models.ForeignKey(Proveedor, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nombre
+
+class Pedido(models.Model):
+    TIPO_PEDIDO = (
+        ('compra', 'Compra'),
+        ('venta', 'Venta'),
+    )
+
+    fecha = models.DateField(auto_now_add=True)
+    tipo = models.CharField(max_length=10, choices=TIPO_PEDIDO)
+    producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.IntegerField()
+    precio_total = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f'{self.tipo} - {self.producto.nombre} - {self.cantidad}'
+```
+
+5. Realizar migraciones para aplicar los cambios al modelo de datos:
+```
+ python manage.py makemigrations
+ python manage.py migrate
+```
+
+# Step 3: Implementación de funcionalidades
+1. Crea las vistas y URLs en inventory\views.py y inventory\urls.py.
+
+1.1. Crear Vistas en inventory\views.py
+   - Abre el archivo base\views.py en tu editor de código.
+   - Importa los módulos necesarios de Django:
+     
+```
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Proveedor, Producto, Pedido
+from .forms import ProveedorForm, ProductoForm, PedidoForm
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import login_required
+```
+2. Define las funciones de vista para cada operación:
+
+ - Registro:
+
+```
+def registro(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('inicio')
+    else:
+        form = UserCreationForm()
+    return render(request, 'inventory/registro.html', {'form': form})
+```
+- Login:
+
+```
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('inicio')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'inventory/login.html', {'form': form})
+```
+
+- Listar Proveedores:
+
+```
+@login_required
+def listar_proveedores(request):
+    proveedores = Proveedor.objects.all()
+    return render(request, 'inventory/listar_proveedores.html', {'proveedores': proveedores})
+```
+
+- Agregar Proveedores:
+
+```
+@login_required
+def agregar_proveedor(request):
+    if request.method == 'POST':
+        form = ProveedorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_proveedores')
+    else:
+        form = ProveedorForm()
+    return render(request, 'inventory/agregar_proveedor.html', {'form': form})
+```
+
+- Listar Productos:
+
+```
+@login_required
+def listar_productos(request):
+    productos = Producto.objects.all()
+    return render(request, 'inventory/listar_productos.html', {'productos': productos})
+```
+
+- Agregar Productos:
+
+```
+@login_required
+def agregar_producto(request):
+    if request.method == 'POST':
+        form = ProductoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_productos')
+    else:
+        form = ProductoForm()
+    return render(request, 'inventory/agregar_producto.html', {'form': form})
+```
+
+- Listar Pedido:
+
+```
+@login_required
+def listar_pedidos(request):
+    pedidos = Pedido.objects.all()
+    return render(request, 'inventory/listar_pedidos.html', {'pedidos': pedidos})
+```
+
+- Agregar Pedido:
+
+```
+@login_required
+def agregar_pedido(request):
+    if request.method == 'POST':
+        form = PedidoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_pedidos')
+    else:
+        form = PedidoForm()
+    return render(request, 'inventory/agregar_pedido.html', {'form': form})
+```
+
