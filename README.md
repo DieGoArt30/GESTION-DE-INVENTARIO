@@ -4,6 +4,39 @@ Resumen:
 
 Implementar un sistema de gestión de inventarios para pequeñas y medianas empresas que permita el seguimiento de productos, proveedores y pedidos. Los usuarios podrán gestionar el inventario, crear pedidos de compra y venta, y generar informes de stock.
 
+El proyecto Gestion de Inventario presenta las siguiente funcionalidades:
+
+Formulario de registro: Los usuarios pueden crear cuentas personalizadas para gestionar sus tareas de manera segura y privada. El proceso de registro es sencillo e intuitivo.
+
+Inicio de Sesión: Accede a tu cuenta de manera rápida y segura. La autenticación de usuarios garantiza que solo tú puedas ver y gestionar tus tareas.
+
+Los usuarios podrán gestionar el inventario, es decir, crear pedidos de compra y venta, y generar informes de stock.
+
+# ESTRUCTURA DEL PROYECTO
+![directorio](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/ddae3e79-435b-4bd9-b16b-b832c211e720)
+
+# INICIO DE SESION
+![inicio de sesion](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/4f80b937-d703-4beb-92a1-08afd39fe682)
+
+# REGISTRO
+![registro](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/bd01d229-2383-41b1-b6e5-6f4b8cc1939a)
+
+# LOGIN
+![login](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/caad80b4-b3bf-4e61-96cc-ac650ed26acb)
+
+# MENU DE INICIO
+![menu principal](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/ef300242-6df8-49ce-9fde-b5db97105601)
+
+# PROVEEDORES
+![proveedores](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/e0ac7f55-1468-45f4-9f0f-ccdad65c48c0)
+
+# PRODUCTOS
+![productos](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/a2826909-63ac-41b6-8a35-005a79edb74c)
+
+# PEDIDOS
+![pedidos](https://github.com/DieGoArt30/GESTION-DE-INVENTARIO/assets/149025522/170af936-d018-4309-b9bb-1bd85e75f251)
+
+
 # Pasos del proyecto
 ## Step 1: Configuraciones del entorno de desarrollo
 
