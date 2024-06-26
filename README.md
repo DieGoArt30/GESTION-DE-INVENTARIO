@@ -36,15 +36,15 @@ git push -u origin main
 ```
 7. Creación de archivo .gitignore y adición de archivos y directorios ignorados: directorio: venv, archivo
    ```
-.gitignore
+ .gitignore
 ```
 8. Creación de proyecto Django inventory_management
    ```
-django-admin startproject inventory_management
+  django-admin startproject inventory_management
 ```
 
 9. cd Gestion_Inventario # Cambia al sub-directorio para trabajos de desarrollo  
 ```
-python manage.py startapp inventory
+  python manage.py startapp inventory
 ```
 
